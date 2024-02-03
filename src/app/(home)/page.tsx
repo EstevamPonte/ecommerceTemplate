@@ -1,5 +1,5 @@
-import Buttom from "@/components/Buttom"
-import Tile from "@/components/Tile"
+import Buttom from "@/components/Buttom";
+import Tile from "@/components/Tile";
 import TileModel from "@/model/Tile";
 export default function Home() {
     const tile1 = new TileModel("https://source.unsplash.com/random", "Cerâmica Bege", 10);
@@ -9,7 +9,7 @@ export default function Home() {
 
     const tilesArray = [tile1, tile2, tile3, tile4];
     return (
-        <div className="container px-3">
+        <div className="container m-auto">
             <h1 className="">Home Page</h1>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
                 {tilesArray.map(tile => {
@@ -19,9 +19,9 @@ export default function Home() {
                         price={tile.price}
                         name={tile.name}
                         />
-                    )
+                    );
                 })}
             </div>
         </div>
-    )
+    );
 }

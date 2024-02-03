@@ -1,4 +1,4 @@
-import bag from "@/assets/bag.png"
+import bag from "@/assets/bag.png";
 
 interface ImageTileProps {
     imagePath: string

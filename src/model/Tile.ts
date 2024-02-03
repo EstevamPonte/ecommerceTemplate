@@ -9,10 +9,10 @@ export default class TileModel {
         this.#price = price;
     }
 
-    get image() {return this.#image}
+    get image() {return this.#image;}
     
-    get name() {return this.#name}
+    get name() {return this.#name;}
 
-    get price() {return this.#price}
+    get price() {return this.#price;}
 
 }
