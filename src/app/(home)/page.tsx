@@ -1,4 +1,3 @@
-import Buttom from "@/components/Buttom";
 import Tile from "@/components/Tile";
 import TileModel from "@/model/Tile";
 export default function Home() {
@@ -15,9 +14,9 @@ export default function Home() {
                 {tilesArray.map(tile => {
                     return (
                         <Tile
-                        imagePath={tile.image}
-                        price={tile.price}
-                        name={tile.name}
+                            imagePath={tile.image}
+                            price={tile.price}
+                            name={tile.name}
                         />
                     );
                 })}

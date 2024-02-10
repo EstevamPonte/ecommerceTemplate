@@ -4,7 +4,7 @@ interface TileNameProps {
 
 function TileName({ name }:TileNameProps) {
     return (
-        <p className="text-sm">{name}</p>
+        <p className="text-sm text-yellow-800">{name}</p>
     );
 }
 
