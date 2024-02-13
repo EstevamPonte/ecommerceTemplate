@@ -1,25 +1,26 @@
-
 import TileImage from "./TileImage";
 import TilePrice from "./TilePrice";
 import TileName from "./TileName";
 import Buttom from "../common/Button";
+import Badge from "./Badge";
+import Product from "@/model/Product";
 
-interface TileProps {
-    name: string
-    price: number
-    imagePath: string
+interface Tile {
+    value: Product;
 }
 
-function Tile({imagePath, name, price}: TileProps) {
+function Tile(props: Tile) {
+    const { badge, imagePath, name, price } = props.value;
 
     return (
-        <div className="border bg-white p-2 gap-1 border-yellow-700 rounded-md flex flex-col">
-            <TileImage imagePath={imagePath}/>
+        <div className="border bg-white p-2 gap-1 border-yellow-700 rounded-md flex flex-col relative">
+            <div className="absolute top-0 left-0">
+                <Badge name={badge} />
+            </div>
+            <TileImage imagePath={imagePath} />
             <TileName name={name} />
-            <TilePrice price={price}/>
-            <Buttom>
-                Olha só
-            </Buttom>
+            <TilePrice price={price} />
+            <Buttom>Olha só</Buttom>
         </div>
     );
 }

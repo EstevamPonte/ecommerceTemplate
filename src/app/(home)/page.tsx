@@ -1,24 +1,30 @@
+"use client";
 import Tile from "@/components/Tile";
-import TileModel from "@/model/Tile";
-export default function Home() {
-    const tile1 = new TileModel("https://source.unsplash.com/random", "Cerâmica Bege", 10);
-    const tile2 = new TileModel("https://source.unsplash.com/random", "Porcelanato Brilhante", 20);
-    const tile3 = new TileModel("https://source.unsplash.com/random", "Mosaico de Vidro", 30);
-    const tile4 = new TileModel("https://source.unsplash.com/random", "Azulejo Geométrico", 40);
+import { useQuery } from "@tanstack/react-query";
+import Product from "@/model/Product";
 
-    const tilesArray = [tile1, tile2, tile3, tile4];
+export default function Home() {
+    const { data } = useQuery({
+        queryKey: ["product"],
+        queryFn: async function () {
+            try {
+                const response = await fetch(
+                    "http://localhost:3000/api/product"
+                );
+                const product = (await response.json()) as Product[];
+                return product;
+            } catch (error) {
+                console.log(error);
+            }
+        },
+    });
+
     return (
         <div className="container m-auto">
             <h1 className="">Home Page</h1>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
-                {tilesArray.map(tile => {
-                    return (
-                        <Tile
-                            imagePath={tile.image}
-                            price={tile.price}
-                            name={tile.name}
-                        />
-                    );
+                {data?.map((tile) => {
+                    return <Tile key={tile.id} value={tile} />;
                 })}
             </div>
         </div>
