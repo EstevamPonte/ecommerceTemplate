@@ -20,6 +20,7 @@ model User {
     email     String    @unique
     address   Address?
     wishList  WishList?
+    userAlth  UserAlth?
 }
 
 model Address {
@@ -63,4 +64,11 @@ model WishList {
     products Product[]
     user     User      @relation(fields: [userId], references: [id])
     userId   String    @unique
+}
+
+model UserAlth {
+    id         String @id @default(uuid())
+    privateKey String
+    user       User   @relation(fields: [userId], references: [id])
+    userId     String @unique
 }
